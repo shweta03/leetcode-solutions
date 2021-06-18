@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        //finding the total no. of subsets
+        int n=pow(2,nums.size());
+        vector<vector<int>> subsets(n);
+        
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<nums.size();j++){            
+            //if the bit is set at the index of the number we add the number to our subset
+                if((i >> (j)) & 1)
+                    subsets[i].push_back(nums[j]);            
+            }            
+        }
+        
+        return subsets;
+    }
+};
+
+//Time complexity : O(n * logn)
+//Time complexity : O(n * logn)
