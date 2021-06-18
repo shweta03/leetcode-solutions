@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> two_sum_pairs;
+        map<int,int> element_map;
+        
+        for(int i=0;i<nums.size();i++){
+        //if the number is present in the map , we add it to our two_pairs vector and return it.
+            if(element_map.find(nums[i])!=element_map.end()){
+                two_sum_pairs.push_back(element_map[nums[i]]);
+                two_sum_pairs.push_back(i);
+                return two_sum_pairs;
+            }
+          //we add the difference between the target and the element in the map with the index of the element , since we have to return the indices of the elements i the result
+            element_map[target-nums[i]]=i;
+        }
+        
+        return two_sum_pairs;
+    }
+};
+
+
+// time complexity: O(n)
+//space complexity: O(n)
