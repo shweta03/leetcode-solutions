@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4)    {
+        int total_tuples=0;
+        map<int,int> pair_sum; 
+        
+        for(int i=0; i<nums1.size(); i++){
+            for(int j=0; j<nums2.size(); j++){
+                //storing the frequency of negative sum of every pair possible (1 element from both arrays) from first two arrays,
+                pair_sum[- nums1[i] - nums2[j]]++;
+            }
+        }
+        
+        for(int i=0; i<nums3.size(); i++){
+            for(int j=0; j<nums4.size(); j++){
+                // checking whether the sum of pair is present in the map, if it is present we increment the total_tuples with the frequency stored(mapvalue)
+                if(pair_sum[nums3[i] + nums4[j]] != 0)
+                    total_tuples += pair_sum[nums3[i] + nums4[j]];
+            }
+        }
+        
+        return total_tuples;
+    }
+};
